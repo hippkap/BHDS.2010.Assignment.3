@@ -1,0 +1,33 @@
+---
+title: "Assignment 3"
+author: "Anna Hipp Kaplan"
+date: "2025-11-02"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Visualization 1
+
+```{r}
+
+
+```
+
+
+# Visualization 2
+
+```{r}
+
+
+```
+
+
+# Summary Statistics
+
+```{r}
+
+
+```
