@@ -9,6 +9,15 @@ output: pdf_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+```{r}
+# read in data
+text <- read.csv("TextMessages.csv")
+
+# install packages
+
+```
+
+
 # Visualization 1
 
 ```{r}
