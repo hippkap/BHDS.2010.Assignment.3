@@ -1,6 +1,6 @@
 ---
 title: "Assignment 3"
-author: "Anna Hipp Kaplan"
+author: "Anna Hipp Kaplan, Jona Gavazi"
 date: "2025-11-02"
 output: pdf_document
 ---
@@ -14,6 +14,10 @@ knitr::opts_chunk$set(echo = TRUE)
 text <- read.csv("TextMessages.csv")
 
 # install packages
+library(ggplot2)
+# install.packages("tidyr")
+library(tidyr)
+library(dplyr)
 
 ```
 
@@ -29,7 +33,23 @@ text <- read.csv("TextMessages.csv")
 # Visualization 2
 
 ```{r}
+#  Create stratified bar charts of text messages Group and Time (Hint: Faceted Bar Charts).
 
+# reshape data from wide to long format
+text_long <- text %>% pivot_longer(cols = c(Baseline, Six_months), names_to = "Time", values_to = "TextMessages")
+
+# make the Time variable ordered for better plotting
+text_long$Time <- factor(text_long$Time, levels = c("Baseline", "Six_months"))
+
+# create stratified bar charts of text messages Group and Time
+barchart <- ggplot(text_long, aes(x = Time, y = TextMessages, fill = Time)) +
+    geom_bar(stat = "summary", fun = "mean", position = "dodge") +
+    facet_wrap(~ Group) +
+    labs(title = "Average Number of Text Messages by Time and Group", x = "Time Point", y = "Average Number of Text Messages", fill = "Time") +
+    scale_y_continuous(limits = c(0,90), breaks = seq(from = 0, to = 90, by = 5))
+
+# view bar chart
+barchart
 
 ```
 
@@ -38,5 +58,17 @@ text <- read.csv("TextMessages.csv")
 
 ```{r}
 
+# compute summary statistics by Group and Time
+summary_stats <- text_long %>%
+  group_by(Group, Time) %>%
+  summarise(
+    n = n(),
+    mean = mean(TextMessages),
+    sd = sd(TextMessages),
+    min = min(TextMessages),
+    max = max(TextMessages))
+
+# view results
+print(summary_stats)
 
 ```
