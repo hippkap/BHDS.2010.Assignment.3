@@ -10,12 +10,16 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 ```{r}
-# read in data
-text <- read.csv("TextMessages.csv")
+# First, we will want to install the appropriate packages "tidyr" and "ggplot2"
+# and then utilize the library() function to load in the packages and their
+# dependencies. We also will name an object "text" and read the .csv file
+# TextMessages unto it, upon which we will generate our visual summaries
+# and run the relevant descriptive statistics. 
 
-# install packages
+text <- read.csv("TextMessages.csv")
+#install.packages("ggplot2")
 library(ggplot2)
-# install.packages("tidyr")
+#install.packages("tidyr")
 library(tidyr)
 library(dplyr)
 
@@ -84,8 +88,8 @@ boxplot1 <- ggplot(text_long, aes(x = Time, y = TextMessages, fill = Time)) +
     breaks = seq(0, 90, by = 5)) + theme_minimal(base_size = 13) + theme(
     plot.title = element_text(face = "bold"),
     panel.spacing = unit(12, "pt"))
-
 print(boxplot1)
+
 # The faceted boxplots illustrate the distribution of text counts, for each
 # participant group (1 and 2) across two time points (Baseline and Six months).
 # In both groups, the median number of text messages is moderately high, with
@@ -109,7 +113,8 @@ print(boxplot1)
 #  Create stratified bar charts of text messages Group and Time (Hint: Faceted Bar Charts).
 
 # reshape data from wide to long format
-text_long <- text %>% pivot_longer(cols = c(Baseline, Six_months), names_to = "Time", values_to = "TextMessages")
+text_long <- text %>% pivot_longer(cols = c(Baseline, Six_months), names_to = 
+                                     "Time", values_to = "TextMessages")
 
 # make the Time variable ordered for better plotting
 text_long$Time <- factor(text_long$Time, levels = c("Baseline", "Six_months"))
@@ -118,8 +123,10 @@ text_long$Time <- factor(text_long$Time, levels = c("Baseline", "Six_months"))
 barchart <- ggplot(text_long, aes(x = Time, y = TextMessages, fill = Time)) +
     geom_bar(stat = "summary", fun = "mean", position = "dodge") +
     facet_wrap(~ Group) +
-    labs(title = "Average Number of Text Messages by Time and Group", x = "Time Point", y = "Average Number of Text Messages", fill = "Time") +
-    scale_y_continuous(limits = c(0,90), breaks = seq(from = 0, to = 90, by = 5))
+    labs(title = "Average Number of Text Messages by Time and Group", x = "Time 
+         Point", y = "Average Number of Text Messages", fill = "Time") +
+    scale_y_continuous(limits = c(0,90), breaks = seq(from = 0, to = 90, by = 
+                                                        5))
 
 # view bar chart
 barchart
