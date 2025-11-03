@@ -75,19 +75,19 @@ comparisons. The data was re-shaped from wide to long for the boxplot visual,
 as well. Interpretations of the faceted boxplot were also included.
 6. Within the main branch, Jona added introductory commentary to the codes
 being run, regarding package installations and libraries. The resulting changes
-were comitted as part of the main branch and pushed into the hub. 
+were committed as part of the main branch and pushed into the hub. 
 7. With the "Boxplot_Visualization" branch, Jona ran the boxplot code once more,
 and amended the interpretation, allowing it to serve as a "succinct baseline"  
 before an additional joint numeric-and-descriptive summary is included, after
 the barchart and summary stats are generated. Changes within this branch
-were comitted and pushed into the hub. 
+were committed and pushed into the hub. 
 
 Summary of Results:
-Both the faceted boxplots and bar charts visualize how the number of text 
+Both the faceted box-plots and bar-charts visualize how the number of text 
 messages varied across groups, and over time. The distributions indicate that
 participants in both groups sent a similar number of text messages at 
 Baseline as they did at Six_months, with only a slight reduction in the median
-and variability over time. The boxplots show slightly tighter interquartile 
+and variability over time. The box-plots show slightly tighter interquartile 
 ranges at the Six-month mark, suggesting that participants' texting behavior
 became more consistent. These trends are confirmed by 
 
