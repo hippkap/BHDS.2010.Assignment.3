@@ -26,8 +26,12 @@ Each row represents one participant with their Group assignment (1 or 2), in
 addition to the number of text messages sent at Baseline and at Six_months. 
 Participant number ranges from 1 to 50, the first 25 of which belong to Group
 1, and the second set of 25 belonging to Group 2. Text message counts are 
-recorded as simple integer values, with the lowest value being 9 and the 
-highest value being 89. 
+recorded as simple integer values, with the lowest overall value being 9 and the 
+highest being 89. The minimum count at Baseline is 47 text messages for
+Group 1, whilst the maximum is 85. For Group 2, the minimum count at Baseline is
+46 while the maximum is 89. Shifts occur at the Six_months mark, where Group 1
+displays a minimum of 9 and a maximum of 78, whilst Group 2 has a minimum of 46
+and a maxmimum of 79. 
 
 Instructions to Run the Code:
 1. Clone or download this GitHub repository onto your local computer.
@@ -68,14 +72,22 @@ was properly loaded, and that the variable titles were explicitly laid out, for
 proper coding. The Baseline and Six_months variables were converted into 
 numeric format, while Group and Time were treated as factors, to facilitate
 comparisons. The data was re-shaped from wide to long for the boxplot visual, 
-as well. 
+as well. Interpretations of the faceted boxplot were also included.
+6. Within the main branch, Jona added introductory commentary to the codes
+being run, regarding package installations and libraries. The resulting changes
+were committed as part of the main branch and pushed into the hub. 
+7. With the "Boxplot_Visualization" branch, Jona ran the boxplot code once more,
+and amended the interpretation, allowing it to serve as a "succinct baseline"  
+before an additional joint numeric-and-descriptive summary is included, after
+the barchart and summary stats are generated. Changes within this branch
+were committed and pushed into the hub. 
 
 Summary of Results:
-Both the faceted oxplots and bar charts visualize how the number of text 
+Both the faceted box-plots and bar-charts visualize how the number of text 
 messages varied across groups, and over time. The distributions indicate that
 participants in both groups sent a similar number of text messages at 
 Baseline as they did at Six_months, with only a slight reduction in the median
-and variability over time. The boxplots show slightly tighter interquartile 
+and variability over time. The box-plots show slightly tighter interquartile 
 ranges at the Six-month mark, suggesting that participants' texting behavior
 became more consistent. These trends are confirmed by 
 
