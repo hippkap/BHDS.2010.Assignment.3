@@ -91,18 +91,19 @@ boxplot1 <- ggplot(text_long, aes(x = Time, y = TextMessages, fill = Time)) +
 print(boxplot1)
 
 # The faceted boxplots illustrate the distribution of text counts, for each
-# participant group (1 and 2) across two time points (Baseline and Six months).
+# participant Group (1, 2) across two time points (Baseline, Six_months).
 # In both groups, the median number of text messages is moderately high, with
 # slightly greater variability at Baseline, as compared to Six months (indicated
 # by the wider interquartile range and the presence of a few lower outliers). 
 # Across groups, the pattern suggests a small decline in text frequency over
-# time, with the central tendencies remaining fairly consistent. The 
-# compactness of the boxes at Six months implies that participants' 
-# messaging behavior became more uniform, while the whiskers inidcate that
-# most of the values fall within a similar overall range. Together, the plots
-# demonstrate stable but marginally reduced texting activity from Baseline 
-# to Six months, and comparable distributional patterns between the two
-# groups involved. 
+# time, with the central tendencies remaining fairly consistent.
+# The consistency of medians across groups and the overlapping interquartile
+# rages thus indicate that no dramatic behavioral shift occurred, with a rather
+# gradual convergence toward more uniform texting patterns over time (as  
+# indicated by the compactness of the boxes at the Six_months mark). The  
+# whiskers demonstrate that most of the values fall within a similar overall 
+# range. 
+
 
 ```
 
