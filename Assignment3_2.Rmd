@@ -1,0 +1,147 @@
+---
+title: "Assignment 3"
+author: "Anna Hipp Kaplan, Jona Gavazi"
+date: "2025-11-02"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+# read in data
+text <- read.csv("TextMessages.csv")
+
+# install packages
+library(ggplot2)
+# install.packages("tidyr")
+library(tidyr)
+library(dplyr)
+
+```
+
+
+# Visualization 1
+
+```{r}
+
+# To get a quick understanding of the exact names of the variables involved, 
+# we can simply run the names() function, followed by the glimpse() command, to
+# ensure that the data are in order and accurately reflect the csv file. 
+names(text)
+glimpse(text)
+
+# We want to first covert the variables Baseline and Six_months into numeric
+# format, to ensure that they can be utilized for quantitative analyses and 
+# visualizations. We then need to reshape the dataset from wide format to 
+# long format, using the pivot_longer() command. In the original wide structure,
+# each participant featured separate columns for the number of text messages
+# sent at Baseline and at Six months. After reshaping, these two columns are 
+# combined into a single variable called TextMessages, with a corresponding
+# Time variable, which indicates whether each observation came from the 
+# Baseline or Six-month time point. This transformation will serve to make
+# the data tidy, which is ideal for plotting/faceting and conducting
+# group/time comparisons within ggplot2.
+
+text_long <- text %>% mutate(Baseline = as.numeric(Baseline),
+    Six_months = as.numeric(Six_months)) %>% pivot_longer(
+    cols = c(Baseline, Six_months),
+    names_to = "Time",
+    values_to = "TextMessages")
+
+# We want to refine the structure by explicitly converting key variables into
+# factors with defined levels. The Time variable (split between indication of
+# Baseline or Six months) will be converted into a factor and ordered, so that
+# Baseline appears first, ensuring consistency in the plots. The Group variable
+# will also be converted into a factor, so that it represents categorical data
+# rather than numeric values. In defining these variables as factors, we 
+# ensure that ggplot2 treats them as categorical axes rather than continuous 
+# scales. 
+
+text_long <- text_long %>% mutate(Time  = factor(Time, 
+    levels = c("Baseline", "Six_months")),
+    Group = as.factor(Group))
+
+# VISUALIZATION 1: 
+
+# We want to generate a set of faceted boxplots that display the distribution
+# of texts across the two time points for each participant group. The function
+# ggplot() will map Time to the x-axis, TextMessages to the y-axis, and Time
+# to the fill color, to create distinction between the periods. We will then
+# utilize the geom_boxplot() layer to create boxplots that show the central
+# tendency, variability, and potential outliers. The facet_wrap(~ Group) 
+# function produces separate panels for each group, allowing for side-by-side
+# comparisons for texting behaviors. 
+  
+boxplot1 <- ggplot(text_long, aes(x = Time, y = TextMessages, fill = Time)) +
+  geom_boxplot(outlier.alpha = 0.8) + facet_wrap(~ Group) + labs(
+  title = "Distribution of Text Messages by Time and Group",
+  subtitle = "Faceted by Group; boxplots show spread at Baseline vs Six_months",
+    x = "Time Point",
+    y = "Number of Text Messages",
+    fill = "Time") + scale_y_continuous(limits = c(0, 90), 
+    breaks = seq(0, 90, by = 5)) + theme_minimal(base_size = 13) + theme(
+    plot.title = element_text(face = "bold"),
+    panel.spacing = unit(12, "pt"))
+
+print(boxplot1)
+# The faceted boxplots illustrate the distribution of text counts, for each
+# participant group (1 and 2) across two time points (Baseline and Six months).
+# In both groups, the median number of text messages is moderately high, with
+# slightly greater variability at Baseline, as compared to Six months (indicated
+# by the wider interquartile range and the presence of a few lower outliers). 
+# Across groups, the pattern suggests a small decline in text frequency over
+# time, with the central tendencies remaining fairly consistent. The 
+# compactness of the boxes at Six months implies that participants' 
+# messaging behavior became more uniform, while the whiskers inidcate that
+# most of the values fall within a similar overall range. Together, the plots
+# demonstrate stable but marginally reduced texting activity from Baseline 
+# to Six months, and comparable distributional patterns between the two
+# groups involved. 
+
+```
+
+
+# Visualization 2
+
+```{r}
+#  Create stratified bar charts of text messages Group and Time (Hint: Faceted Bar Charts).
+
+# reshape data from wide to long format
+text_long <- text %>% pivot_longer(cols = c(Baseline, Six_months), names_to = "Time", values_to = "TextMessages")
+
+# make the Time variable ordered for better plotting
+text_long$Time <- factor(text_long$Time, levels = c("Baseline", "Six_months"))
+
+# create stratified bar charts of text messages Group and Time
+barchart <- ggplot(text_long, aes(x = Time, y = TextMessages, fill = Time)) +
+    geom_bar(stat = "summary", fun = "mean", position = "dodge") +
+    facet_wrap(~ Group) +
+    labs(title = "Average Number of Text Messages by Time and Group", x = "Time Point", y = "Average Number of Text Messages", fill = "Time") +
+    scale_y_continuous(limits = c(0,90), breaks = seq(from = 0, to = 90, by = 5))
+
+# view bar chart
+barchart
+
+```
+
+
+# Summary Statistics
+
+```{r}
+
+# compute summary statistics by Group and Time
+summary_stats <- text_long %>%
+  group_by(Group, Time) %>%
+  summarise(
+    n = n(),
+    mean = mean(TextMessages),
+    sd = sd(TextMessages),
+    min = min(TextMessages),
+    max = max(TextMessages))
+
+# view results
+print(summary_stats)
+
+```
