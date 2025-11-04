@@ -178,4 +178,19 @@ print(summary_stats)
 # period, with Group 1 seeming to show a larger reduction on average than Group 
 # 2. This could be a point of further analysis.
 
+
+# The collective of the findings from the graphics and summary statistics 
+# present a consistent narrative about participants’ texting behaviors over the 
+# six month observation period. Both visualizations reveal that text message 
+# frequency declined slightly from Baseline to Six_months in both groups, with 
+# Group 1 showing a more pronounced decrease. The summary statistics reinforce 
+# these patterns, as Group 1’s mean text count dropped from ~64.84 to 52.96, 
+# while Group 2’s mean declined more modestly from 65.60 to 61.84. The boxplots 
+# further illustrate that the variability in texting behavior decreased at the 
+# Six_month mark, pointing to activity levels becoming more consistent over time. 
+# The results suggest that while both groups maintained broadly similar 
+# communication habits, there was a subtle overall reduction in texting activity, 
+# and a convergence toward greater behavioral consistency across the two time 
+# points, with only mild group-level differences in degree of change.
+
 ```
