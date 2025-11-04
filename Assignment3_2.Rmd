@@ -5,7 +5,7 @@ date: "2025-11-02"
 output: pdf_document
 ---
 
-```{r setup, include=FALSE}
+```{r setup, message = FALSE, warning = FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
@@ -108,6 +108,7 @@ boxplot1 <- ggplot(text_long, aes(x = Time, y = TextMessages, fill = Time)) +
     panel.spacing = unit(12, "pt"))
 print(boxplot1) #view box plot
 
+
 # The faceted boxplots illustrate the distribution of text counts, for each
 # participant Group (1, 2) across two time points (Baseline, Six_months).
 # In both groups, the median number of text messages is moderately high, with
@@ -142,6 +143,7 @@ violinplot <- ggplot(text_long, aes(x = Time, y = TextMessages, fill = Time)) +
   element_text(face = "bold"))
 violinplot #view violin plot
 
+
 # The violin plot visualizes the full distribution of text message counts for
 # each group. The width of each violin depicts the relative frequency 
 # of participants within a given text-count (wider areas indicate where more
@@ -159,7 +161,7 @@ violinplot #view violin plot
 
 # Visualization 2
 # Branch: BarChart_and_SummaryStats
-# Brach: T_test
+# Branch: T_test
 
 ```{r}
 # create stratified bar charts of text messages Group and Time using our 
@@ -185,6 +187,7 @@ barchart <- ggplot(text_long, aes(x = Time, y = TextMessages, fill = Time)) +
 
 # view bar chart
 barchart
+
 
 # This plot shows the average number of text messages sent in each group, at 
 # both the baseline and six month mark of the observational period. On the left 
