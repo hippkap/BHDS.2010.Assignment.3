@@ -105,6 +105,7 @@ print(boxplot1)
 # range. 
 
 
+
 ```
 
 
@@ -147,5 +148,7 @@ summary_stats <- text_long %>%
 print(summary_stats)
 
 # For Group 1, the mean number of text messages decreased from 64.84 (SD = 10.68) at baseline to 52.96 (SD = 16.33) at six months, suggesting a reduction in texting activity over time. Message counts ranged from 47 to 85 at baseline and from 9 to 78 at six months, the largest range in our data. For Group 2, the mean number of text messages showed a smaller decline, from 65.60 (SD = 10.84) at baseline to 61.84 (SD = 9.41) at six months. Message counts ranged from 46 to 89 at baseline and from 46 to 79 at six months. Overall, both groups exhibited a decrease in texting activity over the six-month period, with Group 1 seeming to show a larger reduction on average than Group 2. This could be a point of further analysis.
+
+
 
 ```
