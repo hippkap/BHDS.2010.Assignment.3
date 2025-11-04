@@ -1,4 +1,5 @@
 # BHDS.2010.Assignment.3
+*Final Submission - November 4th, 2025*
 
 **Project Purpose**:
 The purpose of this assignment is to provide an opportunity for us to practice 
@@ -24,7 +25,7 @@ participant groups.
 **Jona** Visualization 1 (Faceted Boxplots) + README documentation
 **Anna** Visualization 2 (Faceted Bar Chart) + Summary statistics
 
-**Data Description**:
+**Raw Data Description**:
 Each row represents one participant with their Group assignment (1 or 2), in
 addition to the number of text messages sent at Baseline and at Six_months. 
 Participant number ranges from 1 to 50, the first 25 of which belong to Group
@@ -44,13 +45,16 @@ compared with Group 1.
 **Instructions to Run the Code**:
 1. Clone or download this GitHub repository onto your local computer.
 2. Open the project folder in RStudio.
+   -> Clone or download this GitHub repository onto your local computer using:
+   File -> New Project -> Version Control -> Git, then paste the repository URL:
+   git clone https://github.com/hippkap/BHDS.2010.Assignment.3.git
 3. Ensure that the file TextMessages.csv is located in the main project 
 directory.
 4. Begin by installing the required packages if not already installed via:
-install.packages(c("tidyverse", "ggplot2", "dplyr"))
+install.packages(c("tidyr", "ggplot2", "dplyr"))
 5. Load the libraries and their dependencies via:
 library(dplyr)
-library(tidyverse)
+library(tidyr)
 library(ggplot2)
 6. Run each script in sequence:
   * Visualization 1: Faceted Boxplot (Jona's code)
@@ -113,6 +117,30 @@ pushed into the hub, and a merge pull request was successfully managed (with no
 errors), with commit 6b3be04 merged into the main branch, and the Bonus_Plot
 branch deleted. Jona also made syntactical/aesthetic changes to the document, 
 pushing these adjustments out into the hub. 
+10. Under a separate branch titled "T_test", Anna conducted a paired-samples
+analysis and included interpretive commentary, strengthening the conclusions
+drawn from the various visual and statistical summaries prior. Changes within
+this "T_test" were committed and pushed into the hub, and a merge pull 
+request was successfully managed (with no errors), with commit 75a13fe merged
+into the main branch, and the T_test branch deleted. The changes were pulled
+into the main branch, wherein Jona added additional details regarding  
+reflections and specific branch names involved in each section. 
+11. After all branches were merged, both collaborators pulled the latest main 
+branch to ensure all local copies were synchronized with the repository.
+12. With every section complete and all warning messages being suppressed,
+the rmd was knit into a finalized, reproducible pdf report. 
+
+**Commit and Pull Request Protocol**
+- Each collaborator committed changes frequently, using clear and descriptive
+messages (e.g. "added packages/installation code that was missing; rearranged 
+t-test summary to place it before the conlcusion; added branch-titles prior to 
+every section (corrected brach typo); added reflections"). 
+- All commits were pushed to the remote repository before initiating pull 
+requests. 
+- Each pull request included a summary of the changes and was reviewed by 
+the collaborator prior to merging. 
+- Merge conflicts did not occur in these instances, but all changes were
+checked and confirmed locally before final approval. 
 
 **Summary of Results**:
 Both the faceted box-plots and bar-charts visualize how the number of text 
@@ -131,8 +159,11 @@ of values at Six_months, reflecting reduced variability. Collectively, the
 graphical and numerical results suggest that texting activity remained 
 relatively steady across the observation period, though a mild overall decline 
 and increased uniformity in participant behavior emerged over time, with Group 1 
-showing the greater reduction.
-
+showing the greater reduction. The paired t-test results revealed that Group 1’s 
+decrease in texting frequency was statistically significant (p = 0.0024), 
+whereas Group 2’s smaller reduction was not (p = 0.0559). This suggests that 
+the observed decline in Group 1 reflects a genuine behavioral change over time, 
+while Group 2’s messaging patterns remained comparatively stable.
 
 **Concluding/Additional Remarks and Notes**:
 This collaborative project not only reinforced our understanding of R’s data 
@@ -144,6 +175,12 @@ provided a comprehensive view of the statistical trends and subtle behavioral
 shifts within the dataset. We decided to include a violin plot to further
 emphasize the distributional "landscape" of the data, in addition to the 
 required boxplot. We also decided to run a t-test on the data, to assess
-whether the difference in group averages is statistically significant. ...
+whether the difference in group averages is statistically significant, adding an
+inferential dimension to our descriptive findings. This analytical extension 
+strengthened the project’s rigor by confirming that Group 1’s decline in texting
+behavior was significant while Group 2’s change was not. Altogether, this 
+assignment deepened our appreciation for how reproducible research practices 
+such as proper documentation, version control, and peer review—contribute to 
+clarity, accuracy, and teamwork in data science.
 
 
