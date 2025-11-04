@@ -111,16 +111,8 @@ print(boxplot1)
 # Visualization 2
 
 ```{r}
-#  Create stratified bar charts of text messages Group and Time (Hint: Faceted Bar Charts).
+# create stratified bar charts of text messages Group and Time using our converted data file text_long from above. we want to generate a set of faceted bar charts that display the distribution of texts across the two time points for each participant group. Using the function ggplot to map the variable Time that we created to the x-axis and the variable TextMessages to the y-axis, we generate these bar charts. We also utilized Time to differentiate the fill color of each time period (Baseline and Six_months). geom_bar() creates bar charts where the height of the bar proportional to the number of cases in each group, showing us the average number of text messages sent by each group at each time period. Finally, using facet_wrap(~ Group) function produces separate panels for each group, allowing us to generate side-by-side comparisons.
 
-# reshape data from wide to long format
-text_long <- text %>% pivot_longer(cols = c(Baseline, Six_months), names_to = 
-                                     "Time", values_to = "TextMessages")
-
-# make the Time variable ordered for better plotting
-text_long$Time <- factor(text_long$Time, levels = c("Baseline", "Six_months"))
-
-# create stratified bar charts of text messages Group and Time
 barchart <- ggplot(text_long, aes(x = Time, y = TextMessages, fill = Time)) +
     geom_bar(stat = "summary", fun = "mean", position = "dodge") +
     facet_wrap(~ Group) +
@@ -132,6 +124,8 @@ barchart <- ggplot(text_long, aes(x = Time, y = TextMessages, fill = Time)) +
 # view bar chart
 barchart
 
+# This plot shows the average number of text messages sent in each group, at both the baseline and six month mark of the observational period. On the left side, we see Group 1, who sent an approximate average of 65 texts at the beginning of the observational period and an approximate average of 53 text messages sent at the six month mark. On the right side, we see Group 2, who also sent an approximate average of 65 text messages at the beginning of the observational period, and an approximate average of 62 text messages at the six month mark. From this plot, it seems that both groups had a decline in the amount of texting they did, with Group 1 having a steeper decline between the beginning of the observational period and the six month mark.
+
 ```
 
 
@@ -139,7 +133,7 @@ barchart
 
 ```{r}
 
-# compute summary statistics by Group and Time
+# compute summary statistics by Group and Time to examine the number of text messages sent by participants in each group at baseline and at six months.
 summary_stats <- text_long %>%
   group_by(Group, Time) %>%
   summarise(
@@ -151,5 +145,7 @@ summary_stats <- text_long %>%
 
 # view results
 print(summary_stats)
+
+# For Group 1, the mean number of text messages decreased from 64.84 (SD = 10.68) at baseline to 52.96 (SD = 16.33) at six months, suggesting a reduction in texting activity over time. Message counts ranged from 47 to 85 at baseline and from 9 to 78 at six months, the largest range in our data. For Group 2, the mean number of text messages showed a smaller decline, from 65.60 (SD = 10.84) at baseline to 61.84 (SD = 9.41) at six months. Message counts ranged from 46 to 89 at baseline and from 46 to 79 at six months. Overall, both groups exhibited a decrease in texting activity over the six-month period, with Group 1 seeming to show a larger reduction on average than Group 2. This could be a point of further analysis.
 
 ```
