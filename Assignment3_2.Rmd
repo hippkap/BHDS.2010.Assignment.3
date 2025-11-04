@@ -194,6 +194,4 @@ print(summary_stats)
 # and a convergence toward greater behavioral consistency across the two time 
 # points, with only mild group-level differences in degree of change.   
 
-
-
 ```
