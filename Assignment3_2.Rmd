@@ -237,3 +237,41 @@ print(summary_stats)
 # points, with only mild group-level differences in degree of change.   
 
 ```
+
+# Paired t-test (bonus)
+
+```{r}
+# as another bonus, we wanted to conduct a paired t-test to see if the decreasing in texting behavior among the two groups was statistically significant. we chose a paired t-test as each participant has repeated measures. 
+
+# split data by group
+group1 <- text %>% filter(Group == 1)
+group2 <- text %>% filter(Group == 2)
+
+# paired t-test for Group 1
+t_group1 <- t.test(group1$Baseline, group1$Six_months, paired = TRUE)
+t_group1
+
+# paired t-test for Group 2
+t_group2 <- t.test(group2$Baseline, group2$Six_months, paired = TRUE)
+t_group2
+
+# For Group 1, with a p-value = 0.0024, we reject the null hypothesis that the 
+# true mean difference between the baseline and six month marks is 0 at the 
+# alpha = 0.05 significance level. Thus, we can conclude that Group 1 did in fact
+# have a statistically significant decline in texts during the observational period.
+# We are 95% confident the true mean difference lies between 4.64 and 19.12.
+
+# For Group 2, with a p-value = 0.05596, we fail to reject the null hypothesis 
+# that the true mean difference between the baseline and six month marks is 0 at
+# the alpha = 0.05 significance level. Thus, we can conclude Group 2 did not have
+# a statistically significant decline in texts during the observational period.
+# We are 95% confident the true mean difference lies between -0.1036 and 7.6236. 
+# Note that 0 is included in this interval, meaning there is some probability that 
+# no decline in texting behavior occurs. 
+
+# Overall, these results suggest that Group 1 showed a significant reduction in 
+# texting behavior over time, whereas Group 2’s change was smaller and nonsignificant.
+
+
+```
+
