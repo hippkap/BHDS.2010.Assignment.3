@@ -5,11 +5,8 @@ date: "2025-11-02"
 output: pdf_document
 ---
 
-```{r setup, message = FALSE, warning = FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
+```{r, echo=TRUE, warning=FALSE, message=FALSE}
 
-```{r}
 ###############################################################################
 # Assignment 3: Collaborating in GitHub.
 # Objective: Create shared repository and clone said repository.
@@ -24,7 +21,7 @@ knitr::opts_chunk$set(echo = TRUE)
 # GitHub repository. 
 
 # First, we will want to install the appropriate packages "tidyr", "ggplot2",
-# "tidyverse" and "dplyr", and then utilize the library() function to load in 
+# and "dplyr", and then utilize the library() function to load in 
 # the packages and their dependencies.
 
 # We also will name an object "text" and read the .csv file
@@ -36,9 +33,7 @@ text <- read.csv("TextMessages.csv")
 library(ggplot2)
 # install.packages("tidyr")
 # install.packages("dplyr")
-# install.packages("tidyverse")
 library(tidyr)
-library(tidyverse)
 library(dplyr)
 
 ```
@@ -289,7 +284,7 @@ t_group2
 # genuine behavioral change over time, while Group 2’s messaging patterns 
 # remained comparatively stable.
 
-# Reflection: # Through this collaborative GitHub project, we learned to 
+# Reflection: Through this collaborative GitHub project, we learned to 
 # effectively use branching, merging, and version control in a real data 
 # workflow. Communication and version history management were critical to 
 # keeping our analyses organized and reproducible.
