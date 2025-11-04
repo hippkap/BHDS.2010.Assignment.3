@@ -10,6 +10,19 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 ```{r}
+###############################################################################
+# Assignment 3: Collaborating in GitHub.
+# Objective: Create shared repository and clone said repository.
+# Objective: Assign roles and create branches tailored to Visualization 1 
+# (Stratified, Faceted Boxplot of Text Messages by Group and Time), 
+# Visualization 2 (Stratified, Faceted Bar Chart of Text Messages by Group and
+# Time), and Summary Statistics (of Text Messages by Group and Time). 
+# Objective: Update a README.md file with activity and instructions.
+###############################################################################
+
+# The working directory at hand is the BHDS.2010.Assignments.3 folder, within
+# GitHub. 
+
 # First, we will want to install the appropriate packages "tidyr" and "ggplot2"
 # and then utilize the library() function to load in the packages and their
 # dependencies. We also will name an object "text" and read the .csv file
@@ -67,8 +80,6 @@ text_long <- text_long %>% mutate(Time  = factor(Time,
     levels = c("Baseline", "Six_months")),
     Group = as.factor(Group))
 
-# VISUALIZATION 1: 
-
 # We want to generate a set of faceted boxplots that display the distribution
 # of texts across the two time points for each participant group. The function
 # ggplot() will map Time to the x-axis, TextMessages to the y-axis, and Time
@@ -104,7 +115,36 @@ print(boxplot1)
 # whiskers demonstrate that most of the values fall within a similar overall 
 # range. 
 
+# *AS A BONUS* We can also consider incorporating a violin plot, which expands
+# upon the information provided by the faceted box-plot, combining its elements
+# with a kernel density plot. This ultimately allows for a more comprehensive
+# view of the data's distribution. Box-plots do well to summarize the central
+# tendency and spread through medians/quartiles/outliers, but violin plots
+# additionally display the shape and density of the data across the 
+# range of values. This can be especially useful for detecting skewness or 
+# subtle distributional differences between groups or time points. Within 
+# ggplot() function, we layer in geom_violin(), still faceted to separate the
+# panels by Group.
 
+violinplot <- ggplot(text_long, aes(x = Time, y = TextMessages, fill = Time)) +
+  geom_violin(trim = FALSE, alpha = 0.6) +
+  geom_boxplot(width = 0.1, fill = "white", outlier.alpha = 0.6) +
+  facet_wrap(~ Group) + labs(title = "Distribution of Text Messages by Time and 
+  Group (Violin + Boxplot)", x = "Time Point", y = "Number of Text Messages",    
+  fill = "Time") + theme_minimal(base_size = 13) + theme(plot.title = element_text(face = "bold"))
+violinplot
+
+# The violin plot visualizes the full distribution of text message counts for
+# each group. The width of each violin depicts the relative frequency 
+# of participants within a given text-count (wider areas indicate where more
+# participant values are concentrated). In both groups, the violins are 
+# broader around the mid-range at Baseline, and slightly narrower at Six_months,
+# indicating that participants' messaging behavior became more clustered
+# around the mean. The thinner tails and smoother contours at Six_months suggest
+# reduced variability and fewer extreme variables, particularly in Group 2. 
+# Overall, the violin plot provides further reinforcement of the subtle decline
+# in average texting activity alongside a "tightening" of behavioral 
+# variability over time. 
 
 ```
 
