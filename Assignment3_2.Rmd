@@ -221,6 +221,7 @@ print(summary_stats)
 # 2. This could be a point of further analysis.
 
 ###############################################################################
+
 # The collective of the findings from the graphics and summary statistics 
 # present a consistent narrative about participants’ texting behaviors over the 
 # six month observation period. Both visualizations reveal that text message 
