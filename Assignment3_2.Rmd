@@ -105,6 +105,7 @@ print(boxplot1)
 # range. 
 
 
+
 ```
 
 
@@ -192,5 +193,7 @@ print(summary_stats)
 # communication habits, there was a subtle overall reduction in texting activity, 
 # and a convergence toward greater behavioral consistency across the two time 
 # points, with only mild group-level differences in degree of change.   
+
+
 
 ```
