@@ -14,7 +14,11 @@ Additionally, we will create summary statistics of Text Messages by Group and
 Time, and update this README.md file with activity details and instructions.
 We will also generate an added faceted violin plot, to complement the boxplot,
 and run a t-test to observe whether the difference in group averages is 
-statistically significant. 
+statistically significant.
+
+Questions? 
+For questions or replication inquiries, collaborators can open an Issue in this 
+repository or contact the project contributors via the team’s Slack channel.
 
 **Direct Objective of Data**:
 The dataset **TextMessages.csv** records the number of text messages typed by 
