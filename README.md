@@ -105,7 +105,7 @@ transformation/mutating coding, for streamlining purposes. Changes within
 this branch were committed, pushed into the hub, and a merge pull request
 was successfully managed, with commit 32ec5d7 merged into the main branch,
 and the BarChart_and_SummaryStats branch deleted. 
-8. Anna submitted a conclusion/summation paragraph for all of the findings
+8. Anna submitted a conclusion/comprehensive paragraph for all of the findings
 across the graphics and summaries, within the main branch. 
 9. Jona added assignment title/header section, alongside assignment objectives.
 Under a separate branch, titled "Bonus_Plot," Jona included commentary prior
